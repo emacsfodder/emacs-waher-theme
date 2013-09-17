@@ -1,29 +1,31 @@
 ;;; waher-theme.el --- Emacs 24 theme based on waher for st2 by dduckster
 ;;; Author: Jasonm23 <jasonm23@gmail.com>
 ;;; Url: https://github.com/jasonm23/emacs-waher-theme
-;;; Version: 20130830.0213
+;;; Version: 20130917.0007
 ;;; Package-Requires: ((emacs "24.1"))
 ;;; Changelog:
-;;; 20130830.0213: - initial version
-;;;
-;;; This program is free software: you can redistribute it and/or modify
-;;; it under the terms of the GNU General Public License as published by
-;;; the Free Software Foundation, version 3 of the License.
-;;;
-;;; This file is distributed in the hope that it will be useful,
-;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;; GNU General Public License for more details.
-;;;
-;;; You should have received a copy of the GNU General Public License
-;;; along with GNU Emacs.
-;;;
-;;; This file is not a part of Emacs
-;;;
+;; 20130917.0007: - updated for better xterm 256color terminal support
+;; 20130830.0213: - initial version
+;;
+;;; License:
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, version 3 of the License.
+;;
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.
+;;
+;; This file is not a part of Emacs
+;;
 ;;; Commentary:
-;;; an Emacs 24 theme based on waher for st2 by dduckster
-;;; see http://www.dduckster.com/Blog/awesome/sublime-theme-dd-waher
-;;;
+;; an Emacs 24 theme based on waher for st2 by dduckster
+;; see http://www.dduckster.com/Blog/awesome/sublime-theme-dd-waher
+;;
 
 (unless (>= 24 emacs-major-version)
   (error "waher-theme requires Emacs 24 or later."))
@@ -35,9 +37,12 @@
  `waher
 
  `(cursor                              ((t ( :background "#f8f8f2" ))))
- `(default                             ((t ( :background "#252620" :foreground "#CEDBE7" ))))
- `(mode-line                           ((t ( :background "#292923"                       :height 125 ))))
- `(linum                               ((t (                       :foreground "#3E4D4A" ))))
+ `(default                             ((((class color) (min-colors 88)) (:background "#000000" :foreground "#CEDBE7"))
+                                        (t ( :background "#252620" :foreground "#CEDBE7" ))))
+ `(mode-line                           ((((class color) (min-colors 88)) (:background "#222222" :foreground "#CEDBE7"))
+                                        (t ( :background "#292923" :foreground "#CEDBE7" :height 125 ))))
+ `(linum                               ((((class color) (min-colors 88)) (:background "#000000" :foreground "#3E4D4A"))
+                                        (t ( :background "#292923" :foreground "#3E4D4A" ))))
  `(trailing-whitespace                 ((t (                       :foreground "#3B3A32" ))))
  `(highlight                           ((t ( :background "#333333" ))))
  `(region                              ((t ( :background "#49483E" ))))
@@ -106,5 +111,9 @@
                (file-name-as-directory (file-name-directory load-file-name))))
 
 (provide-theme 'waher)
+
+;; Local Variables:
+;; eval: (when (fboundp 'rainbow-mode) (rainbow-mode +1))
+;; End:
 
 ;;; waher-theme.el ends here

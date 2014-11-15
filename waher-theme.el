@@ -1,9 +1,11 @@
 ;;; waher-theme.el --- Emacs 24 theme based on waher for st2 by dduckster
 ;;; Author: Jasonm23 <jasonm23@gmail.com>
 ;;; Url: https://github.com/jasonm23/emacs-waher-theme
-;;; Version: 20130917.0007
+;;; Version: 20141115.2020
 ;;; Package-Requires: ((emacs "24.1"))
+;;
 ;;; Changelog:
+;; 20141115.2020: - fixed rainbow delimiters and greater than emacs 24 version check
 ;; 20130917.0007: - updated for better xterm 256color terminal support
 ;; 20130830.0213: - initial version
 ;;
@@ -47,27 +49,23 @@
  `(highlight                           ((t ( :background "#333333" ))))
  `(region                              ((t ( :background "#49483E" ))))
  `(cua-rectangle                       ((t ( :background "#59484E" ))))
- `(fringe                              ((t ( :background "#292A24"))))
+ `(fringe                              ((t ( :background "#292A24" ))))
  `(isearch                             ((t ( :background "#FFE792" :foreground "#000000" ))))
  `(mode-line-inactive                  ((t ( :background "#292423" :foreground "#4E4D4A" ))))
  `(mode-line-emphasis                  ((t (                       :foreground "#CDEBF7" ))))
  `(mode-line-highlight                 ((t (                       :foreground "#CDEBF7" ))))
- `(powerline-active1                   ((t ( :background "#29282E" ))))
- `(powerline-active2                   ((t ( :background "#292A24" ))))
- `(powerline-inactive1                 ((t ( :background "#232324" ))))
- `(powerline-inactive2                 ((t ( :background "#292A24" ))))
  `(minibuffer-prompt                   ((t (                       :foreground "#3090DE" ))) )
  `(font-lock-comment-face              ((t (                       :foreground "#7F9F7F" ))))
  `(font-lock-comment-delimiter-face    ((t (                       :foreground "#6F8F6F" ))))
  `(font-lock-string-face               ((t (                       :foreground "#8CBED6" ))))
  `(font-lock-constant-face             ((t (                       :foreground "#DEC77B" ))))
+ `(font-lock-doc-face                  ((t (                       :foreground "#7F9F7F" ))))
  `(font-lock-builtin-face              ((t (                       :foreground "#DEC77B" ))))
  `(font-lock-keyword-face              ((t (                       :foreground "#DEC77B" ))))
  `(font-lock-variable-name-face        ((t (                       :foreground "#EFA252" ))))
  `(font-lock-type-face                 ((t (                       :foreground "#607060" :underline "#607060" ))))
  `(font-lock-function-name-face        ((t (                       :foreground "#D65921" ))))
  `(font-lock-warning-face              ((t (                       :foreground "#F92672" ))))
- `(font-lock-doc-face                  ((t (                       :foreground "#7F9F7F" ))))
  `(font-lock-doc-string-face           ((t (                       :foreground "#7F9F7F" ))))
  `(font-lock-negation-char-face        ((t (                       :foreground "#F92F72" ))))
  `(font-lock-preprocessor-face         ((t (                       :foreground "#EC9A41" ))))
@@ -77,33 +75,26 @@
  `(flymake-warnline                    ((t (                                             :underline "#008833" ))))
  `(diff-added                          ((t (                       :foreground "#A6E22E" ))))
  `(diff-removed                        ((t (                       :foreground "#F92672" ))))
+ `(diff-changed                        ((t (                       :foreground "#3377FF" ))))
  `(diff-file-header                    ((t (                       :foreground "#D65921" ))))
  `(diff-context                        ((t (                       :foreground "#DDDDDD" ))))
  `(diff-hunk-header                    ((t (                       :foreground "#75715E" ))))
+ `(git-gutter+-added                   ((t (                       :foreground "#A6E22E" ))))
+ `(git-gutter+-deleted                 ((t (                       :foreground "#F92672" ))))
+ `(git-gutter+-modified                ((t (                       :foreground "#3377FF" ))))
+ `(rainbow-delimiters-depth-1-face     ((t (                       :foreground "#D65921" ))))
+ `(rainbow-delimiters-depth-2-face     ((t (                       :foreground "#2B88A8" ))))
+ `(rainbow-delimiters-depth-3-face     ((t (                       :foreground "#FFA07E" ))))
+ `(rainbow-delimiters-depth-4-face     ((t (                       :foreground "#30D039" ))))
+ `(rainbow-delimiters-depth-5-face     ((t (                       :foreground "#58A0A2" ))))
+ `(rainbow-delimiters-depth-6-face     ((t (                       :foreground "#6070DF" ))))
+ `(rainbow-delimiters-depth-7-face     ((t (                       :foreground "#D78060" ))))
+ `(rainbow-delimiters-depth-8-face     ((t (                       :foreground "#FFDD77" ))))
+ `(rainbow-delimiters-depth-9-face     ((t (                       :foreground "#44FF88" ))))
+ `(rainbow-delimiters-unmatched-face   ((t (                       :foreground "#F92672" ))))
  )
 
-(custom-theme-set-variables
- 'waher
- '(powerline-color1 "#29282E")
- '(powerline-color2 "#292A24")
- '(main-line-color1 "#29282E")
- '(main-line-color2 "#292A24")
- )
-
-;; Rainbow delimiters
-(defun waher-rainbow-delim-set-face ()
-  (set-face-attribute 'rainbow-delimiters-depth-1-face   nil       :foreground "#D65921")
-  (set-face-attribute 'rainbow-delimiters-depth-2-face   nil       :foreground "#2B88A8")
-  (set-face-attribute 'rainbow-delimiters-depth-3-face   nil       :foreground "#FFA07E")
-  (set-face-attribute 'rainbow-delimiters-depth-4-face   nil       :foreground "#30D039")
-  (set-face-attribute 'rainbow-delimiters-depth-5-face   nil       :foreground "#58A0A2")
-  (set-face-attribute 'rainbow-delimiters-depth-6-face   nil       :foreground "#6070DF")
-  (set-face-attribute 'rainbow-delimiters-depth-7-face   nil       :foreground "#D78060")
-  (set-face-attribute 'rainbow-delimiters-depth-8-face   nil       :foreground "#FFDD77")
-  (set-face-attribute 'rainbow-delimiters-depth-9-face   nil       :foreground "#44FF88")
-  (set-face-attribute 'rainbow-delimiters-unmatched-face nil       :foreground "#F92672"))
-
-(eval-after-load "rainbow-delimiters" '(waher-rainbow-delim-set-face))
+(custom-theme-set-variables 'waher)
 
 ;;;###autoload
 (when load-file-name
